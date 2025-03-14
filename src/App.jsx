@@ -10,30 +10,48 @@ import './App.css'
 
 function App() {
   const [users, setUsers] = useState([]); 
-  const [showPass, setShowPass] = useState(false);
+  const [showRegPass, setShowRegPass] = useState(false);
+  const [showLoginPass, setShowLoginPass] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
 
-  const show = () => {
-    setShowPass(!showPass);
+  const showRegPassFunc = () => {
+    setShowRegPass(!showRegPass);
   };
 
-  console.log("Users:", users);
+  const showLoginPassFunc = () => {
+    setShowLoginPass(!showLoginPass)
+  }
 
+  const showLoginFormFunc = () => {
+    setShowLoginForm(true)
+  }
+
+  const showRegFormFunc = () => {
+    setShowLoginForm(false)
+  }
+
+  console.log("Users:", users);
+  
   return (
     <section className='mainSection'>
       <RegisterFormik 
         users={users} 
         setUsers={setUsers} 
-        showPass={showPass}
-        show={show}
+        showRegPass={showRegPass}
+        showLoginForm={showLoginForm}
+        showRegPassFunc={showRegPassFunc}
+        showLoginFormFunc={showLoginFormFunc}
         IoEyeSharp={IoEyeSharp}
         FaEyeSlash={FaEyeSlash}
         openEyesImg={openEyesImg}
         closeEyesImg={closeEyesImg}
-      />
+        />
       <LoginFormik 
         users={users} 
-        showPass={showPass}
-        show={show}
+        showLoginPass={showLoginPass}
+        showLoginPassFunc={showLoginPassFunc}
+        showLoginForm={showLoginForm}
+        showRegFormFunc={showRegFormFunc}
         IoEyeSharp={IoEyeSharp}
         FaEyeSlash={FaEyeSlash}
         openEyesImg={openEyesImg}

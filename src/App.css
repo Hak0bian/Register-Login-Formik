@@ -73,11 +73,12 @@ background-color: whitesmoke;
         border: 2px solid black;
         border-radius: 20px;
         font-size: 14px;
+        font-weight: 600;
         letter-spacing: 0.8px;
         padding: 8px 40px;
-        margin-top: 12px;
+        margin: 12px 4px 0;
         cursor: pointer;
-        transition: 0.3s linear;
+        transition: 0.4s linear;
 
         &:hover {
             color: black;
@@ -85,10 +86,32 @@ background-color: whitesmoke;
             border: 2px solid black;
         }
     }
+
+    .btn2{
+        color: black;
+        background-color: white;
+
+        &:hover{
+            color: white;
+            background-color: black;
+        }
+    }
 }
 
 .rightDiv{
     display: flex;
+    visibility: initial;
+    opacity: 1;
+}
+
+.rightDivHidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.registerDivHidden{
+    pointer-events: none;
+    opacity: .5;
 }
 
 /* ***************************************** */
