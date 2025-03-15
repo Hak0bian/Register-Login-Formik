@@ -1,4 +1,5 @@
 import profileImg from "../../assets/profile.png";
+import "./UserCard.css"
 
 const UserCard = ({user}) => {
   return (

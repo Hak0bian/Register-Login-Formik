@@ -6,7 +6,8 @@
   }
   
 body {
-background-color: whitesmoke;
+    background-color: whitesmoke;
+    overflow: hidden;
 }
 
 .mainSection {
@@ -14,131 +15,74 @@ background-color: whitesmoke;
     user-select: none;
 }
 
-.registerDiv,
-.loginDiv {
-    width: 400px;
-    border: 1px solid black;
-    background-color: white;
-    box-shadow: 0 0 8px black;
-    padding: 20px;
-    margin: 20px;
+p {
+    color: red;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.text {
+    padding: 8px 60px;
+    color: black;
     text-align: center;
+}
+
+input {
+    width: 100%;
+    height: 32px;
+    margin: 4px 0;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+.passDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin: 4px 0;
+}
+
+.pass {
+    width: 94%;
+    margin: 0;
+    border: none;
+}
+
+.eye {
+    font-size: 24px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.btn {
+    color: white;
+    background-color: black;
+    border: 2px solid black;
     border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    padding: 8px 40px;
+    margin: 12px 4px 0;
+    cursor: pointer;
+    transition: 0.4s linear;
 
-    p {
-        color: red;
-        font-size: 14px;
-        letter-spacing: 0.5px;
-        text-align: left;
-    }
-
-    .text {
-        padding: 8px 60px;
-        color: black;
-        text-align: center;
-    }
-
-    input {
-        width: 100%;
-        height: 32px;
-        margin: 4px 0;
-        border: none;
-        outline: none;
-        border-bottom: 1px solid black;
-    }
-
-    .passDiv {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid black;
-        margin: 4px 0;
-    }
-
-    .pass {
-        width: 94%;
-        margin: 0;
-        border: none;
-    }
-
-    .eye {
-        font-size: 24px;
-        padding: 4px;
-        cursor: pointer;
-    }
-
-    .btn {
-        color: white;
-        background-color: black;
-        border: 2px solid black;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.8px;
-        padding: 8px 40px;
-        margin: 12px 4px 0;
-        cursor: pointer;
-        transition: 0.4s linear;
-
-        &:hover {
-            color: black;
-            background-color: white;
-            border: 2px solid black;
-        }
-    }
-
-    .btn2{
+    &:hover {
         color: black;
         background-color: white;
-
-        &:hover{
-            color: white;
-            background-color: black;
-        }
+        border: 2px solid black;
     }
 }
 
-.rightDiv{
-    display: flex;
-    visibility: initial;
-    opacity: 1;
-}
-
-.rightDivHidden{
-    visibility: hidden;
-    opacity: 0;
-}
-
-.registerDivHidden{
-    pointer-events: none;
-    opacity: .5;
-}
-
-/* ***************************************** */
-
-.userCard {
-    width: 280px;
-    height: 320px;
-    padding: 20px;
-    word-break: break-all;
+.btn2{
+    color: black;
     background-color: white;
-    border: 1px solid black;
-    box-shadow: 0 0 8px black;
-    border-radius: 20px;
-    margin: 20px;
-  
-    p {
-      letter-spacing: 0.4px;
-      font-weight: 600;
+
+    &:hover{
+        color: white;
+        background-color: black;
     }
-}
-  
-  .imgDiv {
-    text-align: center;
-    padding-bottom: 20px;
-  
-    img {
-      width: 140px;
-    }
-}
-  
+}  

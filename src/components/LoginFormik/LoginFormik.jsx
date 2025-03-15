@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { Formik } from "formik";
 import UserCard from '../UserCard/UserCard';
-// import validation from "../../validation"
+import "./LoginFormik.css"
 
-const LoginFormik = ({ users, showLoginPass, showLoginPassFunc, showLoginForm, showRegFormFunc, 
+const LoginFormik = ({ users, showPass, showPassFunc, showLoginForm, showRegFormFunc, 
   IoEyeSharp, FaEyeSlash, openEyesImg, closeEyesImg }) => { 
     
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -21,9 +21,9 @@ const LoginFormik = ({ users, showLoginPass, showLoginPassFunc, showLoginForm, s
 
 
   return (
-    <div className={showLoginForm ? "rightDiv" : "rightDivHidden"}>
+    <div className={showLoginForm ? "rightDivShow" : "rightDivHidden"}>
       <div className="loginDiv">
-        { showLoginPass ? <img src={closeEyesImg} /> : <img src={openEyesImg}/> }
+        { showPass ? <img src={closeEyesImg} /> : <img src={openEyesImg}/> }
           <h2>Welcome Back !</h2>
           <p className="text"> Enter your personal details to use all of site features </p>
         
@@ -34,7 +34,6 @@ const LoginFormik = ({ users, showLoginPass, showLoginPassFunc, showLoginForm, s
           }}
 
           onSubmit={(values, { resetForm }) => checkUser(values, resetForm)}
-          // validationSchema={validation}
         >
 
           {
@@ -53,15 +52,15 @@ const LoginFormik = ({ users, showLoginPass, showLoginPassFunc, showLoginForm, s
                 <input 
                     className='pass'
                     placeholder="Password"
-                    type={showLoginPass ? "text" : "password"}
+                    type={showPass ? "text" : "password"}
                     value={values.pass} 
                     onChange={handleChange} 
                     name="pass" 
                 />
                 {
-                showLoginPass 
-                  ? <IoEyeSharp onClick={showLoginPassFunc} className="eye" />
-                  : <FaEyeSlash onClick={showLoginPassFunc} className="eye" />
+                showPass 
+                  ? <IoEyeSharp onClick={showPassFunc} className="eye" />
+                  : <FaEyeSlash onClick={showPassFunc} className="eye" />
                 }
               </div>
               { errors.pass && touched.pass && <p>{errors.pass}</p> }

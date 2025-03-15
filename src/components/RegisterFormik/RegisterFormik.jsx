@@ -1,14 +1,15 @@
 import { Formik } from "formik"
 import validation from "../../validation"
+import "./RegisterFormik.css"
 
-const RegisterFormik = ({ users, setUsers, showRegPass, showRegPassFunc, showLoginForm, 
+const RegisterFormik = ({ users, setUsers, showPass, showPassFunc, showLoginForm, 
   showLoginFormFunc, IoEyeSharp, FaEyeSlash, openEyesImg, closeEyesImg
   }) => {
 
   return (
-    <div className={showLoginForm ? "registerDivHidden" : ""}>
+    <div className={showLoginForm ? "registerDivHidden" : "registerDivShow" }>
       <div className="registerDiv">
-        { showRegPass ? <img src={closeEyesImg} /> : <img src={openEyesImg}/> }
+        { showPass ? <img src={closeEyesImg} /> : <img src={openEyesImg}/> }
           <h2>Hello Friend !</h2>
           <p className="text"> Register with your personal details to use all of site features </p>
 
@@ -62,21 +63,20 @@ const RegisterFormik = ({ users, setUsers, showRegPass, showRegPassFunc, showLog
                 <input 
                   className="pass"
                   placeholder="Password" 
-                  type={showRegPass ? "text" : "password"} 
+                  type={showPass ? "text" : "password"} 
                   value={values.pass} 
                   onChange={handleChange} 
                   name="pass" 
                 />
                 {
-                showRegPass 
-                  ? <IoEyeSharp onClick={showRegPassFunc} className="eye" />
-                  : <FaEyeSlash onClick={showRegPassFunc} className="eye" />
+                showPass 
+                  ? <IoEyeSharp onClick={showPassFunc} className="eye" />
+                  : <FaEyeSlash onClick={showPassFunc} className="eye" />
                 }
               </div>
                 { errors.pass && touched.pass && <p>{errors.pass}</p> }
 
-              <button type="submit" className="btn">Sign Up</button>
-              <button type="submit" className="btn btn2" onClick={showLoginFormFunc}>Log In</button>
+              <button type="submit" className="btn" onClick={showLoginFormFunc}>Sign Up</button>
             </form>
           )
           }
