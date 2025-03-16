@@ -1,4 +1,4 @@
-import { Formik } from "formik"
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import validation from "../../validation"
 import "./RegisterFormik.css"
 
@@ -6,13 +6,20 @@ const RegisterFormik = ({ users, setUsers, showPass, showPassFunc, showLoginForm
   showLoginFormFunc, IoEyeSharp, FaEyeSlash, openEyesImg, closeEyesImg
   }) => {
 
+  const addUser = (values, resetForm) => {
+    setUsers([
+      ...users, values
+    ]);
+    resetForm();
+  }
+
+
   return (
     <div className={showLoginForm ? "registerDivHidden" : "registerDivShow" }>
       <div className="registerDiv">
         { showPass ? <img src={closeEyesImg} /> : <img src={openEyesImg}/> }
           <h2>Hello Friend !</h2>
           <p className="text"> Register with your personal details to use all of site features </p>
-
           
         <Formik
           initialValues={{
@@ -23,62 +30,32 @@ const RegisterFormik = ({ users, setUsers, showPass, showPassFunc, showLoginForm
             pass: ""
           }}
           
-          onSubmit={(values, { resetForm }) => {
-            setUsers([
-              ...users, values
-            ]); 
-            resetForm(); 
-          }}
+          onSubmit={(values, { resetForm }) => addUser(values, resetForm)}
           validationSchema={validation}
         >
           {
-          ({ values, handleChange, handleSubmit, errors, touched }) => (
-            <form onSubmit={handleSubmit}> 
-              
-              <input 
-                placeholder="Name" 
-                value={values.name} 
-                onChange={handleChange} 
-                name="name" 
-              />
-              { errors.name && touched.name && <p>{errors.name}</p> }
+            <Form> 
+              <Field placeholder="Name" name="name" />
+              <ErrorMessage name="name" component="div" className="errMsg"/>
 
-              <input 
-                placeholder="Lastname" 
-                value={values.lastName} 
-                onChange={handleChange} 
-                name="lastName" 
-              />
-              { errors.lastName && touched.lastName && <p>{errors.lastName}</p> }
+              <Field placeholder="Lastname" name="lastName" />
+              <ErrorMessage name="lastName" component="div" className="errMsg"/>
 
-              <input 
-                placeholder="Email" 
-                value={values.email} 
-                onChange={handleChange} 
-                name="email" 
-              />
-              { errors.email && touched.email && <p>{errors.email}</p> }
+              <Field placeholder="Email" name="email" />
+              <ErrorMessage name="email" component="div" className="errMsg"/>
 
               <div className="passDiv">
-                <input 
-                  className="pass"
-                  placeholder="Password" 
-                  type={showPass ? "text" : "password"} 
-                  value={values.pass} 
-                  onChange={handleChange} 
-                  name="pass" 
-                />
+                <Field placeholder="Password" name="pass" className="pass" type={showPass ? "text" : "password"} />
                 {
-                showPass 
+                  showPass 
                   ? <IoEyeSharp onClick={showPassFunc} className="eye" />
                   : <FaEyeSlash onClick={showPassFunc} className="eye" />
                 }
               </div>
-                { errors.pass && touched.pass && <p>{errors.pass}</p> }
+                <ErrorMessage name="pass" component="div" className="errMsg"/>
 
               <button type="submit" className="btn" onClick={showLoginFormFunc}>Sign Up</button>
-            </form>
-          )
+            </Form>
           }
         </Formik>
       </div>

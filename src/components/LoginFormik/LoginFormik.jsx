@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Formik } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import UserCard from '../UserCard/UserCard';
 import "./LoginFormik.css"
 
@@ -32,44 +32,28 @@ const LoginFormik = ({ users, showPass, showPassFunc, showLoginForm, showRegForm
             email: "",
             pass: ""
           }}
-
           onSubmit={(values, { resetForm }) => checkUser(values, resetForm)}
         >
 
           {
-          ({ values, handleChange, handleSubmit, errors, touched }) => (
-            <form onSubmit={handleSubmit}>
-              <input 
-                  type="email"
-                  placeholder="Email"
-                  value={values.email} 
-                  onChange={handleChange} 
-                  name="email" 
-              />
-              { errors.email && touched.email && <p>{errors.email}</p> }
+            <Form>
+              <Field placeholder="Email" name="email" />
+              <ErrorMessage name="email" component="div" className="errMsg"/>
 
               <div className="passDiv">
-                <input 
-                    className='pass'
-                    placeholder="Password"
-                    type={showPass ? "text" : "password"}
-                    value={values.pass} 
-                    onChange={handleChange} 
-                    name="pass" 
-                />
+                <Field placeholder="Password" name="pass" className="pass" type={showPass ? "text" : "password"} />
                 {
-                showPass 
+                  showPass 
                   ? <IoEyeSharp onClick={showPassFunc} className="eye" />
                   : <FaEyeSlash onClick={showPassFunc} className="eye" />
                 }
               </div>
-              { errors.pass && touched.pass && <p>{errors.pass}</p> }
-              { loginErr ? <p>{loginErr}</p> : "" }
+              <ErrorMessage name="pass" component="div" className="errMsg"/>
+              { loginErr ? <p className="errMsg"> {loginErr} </p> : "" }
 
               <button type="submit" className='btn'>Sign In</button>
               <button type="submit" className="btn btn2" onClick={showRegFormFunc}>Sign Up</button>
-            </form>
-          )
+            </Form> 
           }
         </Formik>
       </div>

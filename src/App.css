@@ -15,7 +15,7 @@ body {
     user-select: none;
 }
 
-p {
+.errMsg {
     color: red;
     font-size: 14px;
     letter-spacing: 0.5px;
